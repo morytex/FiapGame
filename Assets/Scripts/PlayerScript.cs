@@ -31,15 +31,6 @@ public class PlayerScript : MonoBehaviour {
 		estaoNoChao = Physics2D.Linecast(transform.position, 
 			chaoVerificador.position, 1 << LayerMask.NameToLayer("Ground"));
 
-		print ("transform.position");
-		print (transform.position);
-
-		print ("chaoVerificador.position");
-		print (chaoVerificador.position);
-
-		print ("LayerMask.NameToLayer(\"Ground\")");
-		print (LayerMask.NameToLayer("Ground"));
-
 		// Pulo
 		if (Input.GetButtonDown ("Jump") && estaoNoChao) {
 			rb.velocity = new Vector2 (0.0f, impulso); 
@@ -51,11 +42,9 @@ public class PlayerScript : MonoBehaviour {
 		} else if (mover_x < 0) {
 			spriteRender.flipX = true; 
 		}
-//
+
 		// Animacoes
 		animator.SetFloat("pMove", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
-		animator.SetBool("pJump", !estaoNoChao); 
-//		animator.SetBool("pFire", Input.GetButton("Fire1")); 
-
+		animator.SetBool("pJump", !estaoNoChao);
 	}
 }
