@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckScript : MonoBehaviour {
+public class Check : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +15,6 @@ public class CheckScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D c) {
-		print ("point +1");
+		GameController.instance.PlayerScored ();
 	}
 }

@@ -1,19 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MainControllerScript : MonoBehaviour {
-	public bool gameStarted = false;
+public class GameOver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameStarted = false;
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!gameStarted && Input.GetButtonDown ("Jump")) {
-			gameStarted = true;
+		if (Input.GetButtonDown ("Fire1") || Input.GetKeyDown(KeyCode.Return)) {
+			SceneManager.LoadScene ("Main");
 		}
 	}
 }

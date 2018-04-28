@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BlinkScript : MonoBehaviour {
+public class Blink : MonoBehaviour {
 
 	public float intervalo;
 
@@ -16,8 +16,8 @@ public class BlinkScript : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Return)) {
-			SceneManager.LoadScene ("main");
+		if (Input.GetButtonDown ("Fire1") || Input.GetKeyDown(KeyCode.Return)) {
+			SceneManager.LoadScene ("Main");
 		}
 	}
 }

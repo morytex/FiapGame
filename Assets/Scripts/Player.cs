@@ -2,35 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour {
+public class Player : MonoBehaviour {
 
 	public float velocidade;
 	public float impulso;
 
 	public Transform chaoVerificador;
-	bool estaoNoChao;
+	bool onGround;
 
 	Rigidbody2D rb;
 	Animator animator;
 
 	void Start () {
-		// Interface para os componentes
+		// Component interfaces
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
 	}
 
 	void Update () {
 
-		// Verificar colisao com o piso
-		estaoNoChao = Physics2D.Linecast(transform.position, 
+		// Verify collision with the ground
+		onGround = Physics2D.Linecast(transform.position, 
 			chaoVerificador.position, 1 << LayerMask.NameToLayer("Ground"));
 
-		// Pulo
-		if (Input.GetButtonDown ("Jump") && estaoNoChao) {
+		// Jump
+		if (Input.GetButtonDown ("Jump") && onGround) {
 			rb.velocity = new Vector2 (0.0f, impulso); 
 		}
 
-		// Animacoes
-		animator.SetBool("pJump", !estaoNoChao);
+		// Animations
+		animator.SetBool("pJump", !onGround);
+	}
+
+	void OnCollisionEnter2D(Collision2D c) {
+		if (c.gameObject.tag == "Obstacle") {
+			GameController.instance.PlayerDied ();
+		}
 	}
 }

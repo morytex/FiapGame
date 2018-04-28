@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CactusScript : MonoBehaviour {
+public class Cactus : MonoBehaviour {
 
 	public float velocity;
 	public float initialPosition, finalPosition;
@@ -14,13 +14,13 @@ public class CactusScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// Verifica se atingiu o limite de camera e reposiciona para um novo ciclo.
+		// Verify if reached the camera limit and reposition it for a new cicle.
 		if (transform.position.x <= finalPosition)
 		{
 			Destroy (gameObject);
 		}
 
-		// Move o fundo para o lado esquerdo da tela.
+		// Move background to the left side of screen.
 		transform.Translate(Vector2.left * velocity * Time.deltaTime);
 	}
 }

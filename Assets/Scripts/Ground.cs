@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundScript : MonoBehaviour {
+public class Ground : MonoBehaviour {
 
 	public float velocity;
 	public float initialPosition, finalPosition;
@@ -16,7 +16,7 @@ public class GroundScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		// Verifica se atingiu o limite de camera e reposiciona para um novo ciclo.
+		// Verify if reached the camera limit and reposition it for a new cicle.
 		if (transform.position.x <= finalPosition)
 		{
 			transform.position = new Vector2(initialPosition, transform.position.y);
@@ -24,7 +24,7 @@ public class GroundScript : MonoBehaviour {
 			Instantiate (cactusPrefab, cactusGenerator.position, cactusGenerator.rotation);
 		}
 
-		// Move o fundo para o lado esquerdo da tela.
+		// Move background to the left side of screen.
 		transform.Translate(Vector2.left * velocity * Time.deltaTime);
 	}
 }
