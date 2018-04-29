@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
 			chaoVerificador.position, 1 << LayerMask.NameToLayer("Ground"));
 
 		// Jump
-		if (Input.GetButtonDown ("Jump") && onGround) {
+		if ((Input.GetButtonDown ("Jump") || Input.GetButtonDown ("Fire1")) && onGround) {
 			rb.velocity = new Vector2 (0.0f, impulso); 
 		}
 
